@@ -1,0 +1,44 @@
+@model Topic
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>LearnSpace | New Topic</title>
+</head>
+<body>
+    <h2>Enter The Topic You Are Learning</h2>
+    <form asp-action="NewTopic" asp-controller="home" method="post">
+    <div>
+        <span asp-validation-for="TopicName"></span>
+        <div>
+            <label asp-for="TopicName">Topic Name </label>
+            <input asp-for="TopicName" type="text">
+        </div>
+    </div>
+    <div>
+        <div>
+        <span asp-validation-for="TopicDifficulty"></span>
+        <label asp-for="TopicDifficulty">Topic Difficulty </label>
+        <select asp-for="TopicDifficulty">
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+    </div>
+    </div>
+    <div>
+        <span asp-validation-for="TopicFeedback"></span>
+        <div>
+            <label asp-for="TopicFeedback">Thoughts on This Topic</label>
+            <textarea asp-for="TopicFeedback" name="TopicFeedback" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+        <button type="submit">Add To Your Topics!</button>
+</form> 
+</body>
+</html>

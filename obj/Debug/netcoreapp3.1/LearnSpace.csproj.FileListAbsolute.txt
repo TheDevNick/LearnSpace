@@ -55,3 +55,6 @@ C:\Users\holli\Desktop\LearnSpace\obj\Debug\netcoreapp3.1\LearnSpace.dll
 C:\Users\holli\Desktop\LearnSpace\obj\Debug\netcoreapp3.1\LearnSpace.pdb
 C:\Users\holli\Desktop\LearnSpace\obj\Debug\netcoreapp3.1\LearnSpace.genruntimeconfig.cache
 C:\Users\holli\Desktop\LearnSpace\obj\Debug\netcoreapp3.1\Razor\Views\Home\LearnDashboard.cshtml.g.cs
+C:\Users\holli\Desktop\LearnSpace\obj\Debug\netcoreapp3.1\Razor\Views\Home\NewTopic.cshtml.g.cs
+C:\Users\holli\Desktop\LearnSpace\obj\Debug\netcoreapp3.1\Razor\Views\Home\Accomplishment.cshtml.g.cs
+C:\Users\holli\Desktop\LearnSpace\obj\Debug\netcoreapp3.1\Razor\Views\Home\NewAccomplishment.cshtml.g.cs

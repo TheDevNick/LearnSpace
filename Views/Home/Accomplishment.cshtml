@@ -1,4 +1,4 @@
-@model List<Topic>
+@model List<Accomplishment>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,27 +12,25 @@
 </head>
 <body>
 
-    <h1> @TempData["WelcomeMsg"]</h1>
-    <a href="/newtopic">Add A Topic</a>
+    <a href="/newaccomplishment">Add A Accomplishment</a>
 @* This section will show the topics *@
 <div>
-    <h1>Topics you are currently learing</h1>
-    <table>
-            <tr>
-                <th>Name</th>
-                <th>Difficulty Level</th>
-                <th>Thoughts About Topic</th>
-            </tr>
-            @foreach (var topic in Model)
+    <h1>Celebrate your Accomplishments!</h1>
+                <p>Name</p>
+                <p>Accomplishment Level</p>
+                <p>Accomplishment Description</p>
+
+            @foreach (var accomplish in Model)
             { 
-                <tr> 
-                    <td><a href="viewTopic/@topic.TopicId">@topic.TopicName</a></td>
-                    <td><a href="viewTopic/@topic.TopicId">@topic.TopicDifficulty</a></td>
-                    <td><a href="viewTopic/@topic.TopicId">@topic.TopicFeedback</a></td>
-                </tr>
+                <section> 
+                    <div>@accomplish.AccomplishmentName</div>
+                    <div>@accomplish.AccomplishmentType</div>
+                    <div>@accomplish.AccomplishmentDescription</div>
+                    <div>@accomplish.UserId</div>
+                </section>
+                <hr>
                
             }
-    </table>
 
 
 </div>

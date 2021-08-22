@@ -1,0 +1,43 @@
+@model Accomplishment
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>LearnSpace | New Accomplishment</title>
+</head>
+<body>
+    <h2>Enter A Accomplishment!</h2>
+    <form asp-action="NewAccomplishment" asp-controller="home" method="post">
+    <div>
+        <span asp-validation-for="AccomplishmentName"></span>
+        <div>
+            <label asp-for="AccomplishmentName">Accomplishment Name </label>
+            <input asp-for="AccomplishmentName" type="text">
+        </div>
+    </div>
+    <div>
+        <div>
+        <span asp-validation-for="AccomplishmentType"></span>
+        <label asp-for="AccomplishmentType">Level Of Accomplishment </label>
+        <select asp-for="AccomplishmentType">
+            <option value="SmallWin">Small Win</option>
+            <option value="BigWin">Big Win</option>
+        </select>
+    </div>
+    </div>
+    <div>
+        <span asp-validation-for="AccomplishmentDescription"></span>
+        <div>
+            <label asp-for="AccomplishmentDescription">Describe Accomplishment</label>
+            <textarea asp-for="AccomplishmentDescription" name="AccomplishmentDescription" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+        <button type="submit">Add To Your Accomplishment!</button>
+</form> 
+</body>
+</html>

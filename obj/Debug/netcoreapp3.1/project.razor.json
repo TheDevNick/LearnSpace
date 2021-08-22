@@ -14420,6 +14420,21 @@
       "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\LearnDashboard.cshtml",
       "TargetPath": "Views\\Home\\LearnDashboard.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\Accomplishment.cshtml",
+      "TargetPath": "Views\\Home\\Accomplishment.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\NewAccomplishment.cshtml",
+      "TargetPath": "Views\\Home\\NewAccomplishment.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\NewTopic.cshtml",
+      "TargetPath": "Views\\Home\\NewTopic.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"

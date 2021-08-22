@@ -87,16 +87,50 @@ namespace LearnSpace.Controllers
         [HttpGet("/learndashboard")]
         public IActionResult LearnDashboard()
         {
-            // show all of the user topics learning
-            // List<Topic> AllTopics = db.Topics
-            // .ToList();
-            // return View(AllTopics);
-
-            Container container = new Container();
-            container.AllTopics = db.Topics.ToList();
-            return View("LearnDashboard", container);
-            // return View();
+            List<Topic> AllTopics = db.Topics
+            .ToList();
+            return View(AllTopics);
         }
+
+
+        [HttpGet("/accomplishments")]
+        public IActionResult Accomplishment() 
+        {
+            List<Accomplishment> AllAccomplishments = db.Accomplishments
+            .ToList();
+            return View(AllAccomplishments);
+        }
+
+        [HttpGet("/newaccomplishment")]
+        public IActionResult NewAccomplishment() => View();
+
+        [HttpPost("/newaccomplishment")]
+        public IActionResult NewAccomplishment(Accomplishment data)
+        {
+            // Topic Validation
+            if (ModelState.IsValid)
+            {
+                Accomplishment accomplished = db.Accomplishments.FirstOrDefault(accomp => accomp.AccomplishmentName == data.AccomplishmentName);
+                if (accomplished != null)
+                {
+                    ModelState.AddModelError("AccomplishmentName", "You already accomplished this!");
+                    return View("NewAccomplishment");
+
+                }
+                User user = db.Users.FirstOrDefault(usr => usr.UserID == (int)HttpContext.Session.GetInt32("UserId"));
+                data.UserId = user.UserID;
+                db.Accomplishments.Add(data);
+                db.SaveChanges();
+                return RedirectToAction("Accomplishment");
+            }
+            return View("NewAccomplishment");
+
+        }
+
+
+        [HttpGet("/newtopic")]
+        public IActionResult NewTopic() => View();
+
 
         [HttpPost("/newTopic")]
         public IActionResult NewTopic(Topic data)
