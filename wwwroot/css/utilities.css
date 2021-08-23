@@ -20,6 +20,29 @@ UTILITIES STYLING  (classes that will be used all around website)
     margin: 10px;
 }
 
+.card:nth-of-type(odd) {
+    background-color: #047AEA;
+    color: #fff;
+}
+.fa-plus-circle {
+    color: #047AEA;
+}
+
+.modifyTopic {
+    display: flex;
+    align-items: center;
+}
+
+.modifyTopic a {
+    padding: .5em;
+}
+
+.topicBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .error {
     padding: 0;
     margin: 0;

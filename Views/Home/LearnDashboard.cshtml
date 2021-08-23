@@ -11,28 +11,50 @@
     <title>LearnSpace | Dashboard</title>
 </head>
 <body>
+        <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Le<i class="fab fa-atlassian fa-xs"></i>rn Sp<i class="fab fa-atlassian fa-xs"></i>ce <i class="fas fa-brain"></i></h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Motivation</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav> 
+        </div>
+    </div>
 
     <h1> @TempData["WelcomeMsg"]</h1>
-    <a href="/newtopic">Add A Topic</a>
 @* This section will show the topics *@
-<div>
-    <h1>Topics you are currently learing</h1>
-    <table>
-            <tr>
-                <th>Name</th>
-                <th>Difficulty Level</th>
-                <th>Thoughts About Topic</th>
-            </tr>
+<div class="container">
+    <section id="headerInfo">
+        <h1 id="topicHeading">Topics you are currently learing</h1>
+        <h2>Add A Topic <a href="/newtopic"><i class="fas fa-plus-circle fa-lg"></i></a></h2>
+    </section>
+   
             @foreach (var topic in Model)
             { 
-                <tr> 
-                    <td><a href="viewTopic/@topic.TopicId">@topic.TopicName</a></td>
-                    <td><a href="viewTopic/@topic.TopicId">@topic.TopicDifficulty</a></td>
-                    <td><a href="viewTopic/@topic.TopicId">@topic.TopicFeedback</a></td>
-                </tr>
+                <section class="topicBox card">
+                    <div>
+                        <h2>Name of Topic</h2>
+                        <h3><a href="viewTopic/@topic.TopicId">@topic.TopicName</a></h3>
+                    </div>
+
+                    <div>
+                        <h2>Topic Difficulty Level</h2>
+                        <h3><a href="viewTopic/@topic.TopicId">@topic.TopicDifficulty</a></h3>
+                    </div>
+                    <div>
+                        <h2>Thoughts About Topic</h2>
+                        <h3><a href="viewTopic/@topic.TopicId">@topic.TopicFeedback</a></h3>
+                    </div>
+                    <div class="modifyTopic">
+                        <a href="/editTopic/@topic.TopicId"><i class="fas fa-edit fa-2x"></i></a>
+                        <a href="/deleteTopic/@topic.TopicId"><i class="fas fa-trash fa-2x"></i></a>
+                    </div>
+                </section>
                
             }
-    </table>
 
 
 </div>

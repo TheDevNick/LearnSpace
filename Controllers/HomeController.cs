@@ -155,5 +155,30 @@ namespace LearnSpace.Controllers
 
         }
 
+        [HttpGet("/viewtopic/edit/{TopicId}")]
+
+        public IActionResult Edit(int TopicId)
+        {
+            var topic = db.Topics.FirstOrDefault(usr => usr.TopicId == TopicId);
+
+            return View(topic);
+        }
+
+        [HttpPost("/EditTopic")]
+        public IActionResult EditTopic(Topic data, int id)
+        {
+            if (ModelState.IsValid)
+            {
+
+                Topic EditTopic = db.Topics.FirstOrDefault(top => top.TopicId == id);
+                EditTopic.TopicFeedback = data.TopicFeedback;
+                EditTopic.TopicName = data.TopicName;
+                EditTopic.TopicDifficulty = data.TopicDifficulty;
+                db.SaveChanges();
+                return RedirectToAction("LearnDashboard");
+            }
+            return RedirectToAction("LearnDashboard");
+        }
+
     }
 }
