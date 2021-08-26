@@ -3,14 +3,16 @@ using System;
 using LearnSpace.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LearnSpace.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20210824124655_LearnSpaceInitial")]
+    partial class LearnSpaceInitial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,36 +42,7 @@ namespace LearnSpace.Migrations
 
                     b.HasKey("AccomplishmentId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Accomplishments");
-                });
-
-            modelBuilder.Entity("LearnSpace.Models.Association", b =>
-                {
-                    b.Property<int>("AssociationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("AccomplishmentId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AssociationId");
-
-                    b.HasIndex("AccomplishmentId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Associations");
                 });
 
             modelBuilder.Entity("LearnSpace.Models.Card", b =>
@@ -172,30 +145,6 @@ namespace LearnSpace.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("LearnSpace.Models.Accomplishment", b =>
-                {
-                    b.HasOne("LearnSpace.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("LearnSpace.Models.Association", b =>
-                {
-                    b.HasOne("LearnSpace.Models.Accomplishment", "Accomplishments")
-                        .WithMany("AllLikingUsers")
-                        .HasForeignKey("AccomplishmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LearnSpace.Models.User", "User")
-                        .WithMany("AllLikedAccomplishments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

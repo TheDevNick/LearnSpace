@@ -21,6 +21,7 @@ namespace LearnSpace.Models
         [Required(ErrorMessage=" Accomplishment type is required ")]
         public string AccomplishmentType {get;set;}
         public int UserId {get;set;}
-        
+        public User User {get; set;}
+        public List<Association> AllLikingUsers {get;set;}        
     }
 }

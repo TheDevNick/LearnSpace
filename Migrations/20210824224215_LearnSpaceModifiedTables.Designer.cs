@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearnSpace.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210819171700_LearnSpaceAllTablesAdded")]
-    partial class LearnSpaceAllTablesAdded
+    [Migration("20210824224215_LearnSpaceModifiedTables")]
+    partial class LearnSpaceModifiedTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,17 +25,51 @@ namespace LearnSpace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("BigWin")
+                    b.Property<string>("AccomplishmentDescription")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("SmallWin")
+                    b.Property<string>("AccomplishmentName")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AccomplishmentType")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("AccomplishmentId");
 
                     b.ToTable("Accomplishments");
+                });
+
+            modelBuilder.Entity("LearnSpace.Models.Association", b =>
+                {
+                    b.Property<int>("AssociationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("AccomplishmentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AssociationId");
+
+                    b.HasIndex("AccomplishmentId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Associations");
                 });
 
             modelBuilder.Entity("LearnSpace.Models.Card", b =>
@@ -124,10 +158,6 @@ namespace LearnSpace.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -137,12 +167,26 @@ namespace LearnSpace.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("varchar(15) CHARACTER SET utf8mb4")
-                        .HasMaxLength(15);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("LearnSpace.Models.Association", b =>
+                {
+                    b.HasOne("LearnSpace.Models.Accomplishment", "Accomplishments")
+                        .WithMany("AllLikingUsers")
+                        .HasForeignKey("AccomplishmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LearnSpace.Models.User", "User")
+                        .WithMany("AllLikedAccomplishments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

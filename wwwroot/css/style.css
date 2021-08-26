@@ -47,6 +47,17 @@ body {
 .logo {
     font-size: 2.4rem;
 }
+
+.likeInfo {
+    display: flex;
+    flex-direction: column;
+    padding: .2em;
+}
+
+.cardOption {
+    color: #d9534f;
+    border-bottom: 1px solid #d9534f;
+}
 ul {
     list-style-type: none;
 }
@@ -88,6 +99,10 @@ code, pre {
     height: 70px;
     overflow: hidden;
 
+}
+
+.successMsg {
+    color: var(--primary-color);
 }
 
 .navbar ul {
@@ -217,6 +232,10 @@ code, pre {
 .stats .grid p {
     font-size: 25px;
     font-weight: bold;
+}
+
+.heart:hover {
+    color: #d9534f;
 }
 
 /******************************************************** 

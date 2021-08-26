@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\LearnSpace.csproj",
+  "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\LearnSpace.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14402,38 +14402,48 @@
   "RootNamespace": "LearnSpace",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\Login.cshtml",
-      "TargetPath": "Views\\Home\\Login.cshtml",
+      "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\Views\\Home\\NewTopic.cshtml",
+      "TargetPath": "Views\\Home\\NewTopic.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\Registration.cshtml",
+      "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\Views\\Home\\Registration.cshtml",
       "TargetPath": "Views\\Home\\Registration.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\LearnDashboard.cshtml",
-      "TargetPath": "Views\\Home\\LearnDashboard.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\Accomplishment.cshtml",
-      "TargetPath": "Views\\Home\\Accomplishment.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\NewAccomplishment.cshtml",
+      "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\Views\\Home\\NewAccomplishment.cshtml",
       "TargetPath": "Views\\Home\\NewAccomplishment.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\holli\\Desktop\\LearnSpace\\Views\\Home\\NewTopic.cshtml",
-      "TargetPath": "Views\\Home\\NewTopic.cshtml",
+      "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\Views\\Home\\Accomplishment.cshtml",
+      "TargetPath": "Views\\Home\\Accomplishment.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\Views\\Home\\Login.cshtml",
+      "TargetPath": "Views\\Home\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\Views\\Home\\AddCard.cshtml",
+      "TargetPath": "Views\\Home\\AddCard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\Views\\Home\\LearnDashboard.cshtml",
+      "TargetPath": "Views\\Home\\LearnDashboard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User 1\\Desktop\\LearnSpace\\Views\\Home\\Edit.cshtml",
+      "TargetPath": "Views\\Home\\Edit.cshtml",
       "FileKind": "mvc"
     }
   ],

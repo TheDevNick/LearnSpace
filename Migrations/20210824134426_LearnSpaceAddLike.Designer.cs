@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearnSpace.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210820114132_LearnSpaceRemoveLastName")]
-    partial class LearnSpaceRemoveLastName
+    [Migration("20210824134426_LearnSpaceAddLike")]
+    partial class LearnSpaceAddLike
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,11 +25,15 @@ namespace LearnSpace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("BigWin")
+                    b.Property<string>("AccomplishmentDescription")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("SmallWin")
+                    b.Property<string>("AccomplishmentName")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AccomplishmentType")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 

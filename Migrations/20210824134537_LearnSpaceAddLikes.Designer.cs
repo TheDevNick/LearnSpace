@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearnSpace.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210819172025_smallchange")]
-    partial class smallchange
+    [Migration("20210824134537_LearnSpaceAddLikes")]
+    partial class LearnSpaceAddLikes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,11 +25,15 @@ namespace LearnSpace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("BigWin")
+                    b.Property<string>("AccomplishmentDescription")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("SmallWin")
+                    b.Property<string>("AccomplishmentName")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AccomplishmentType")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -84,6 +88,27 @@ namespace LearnSpace.Migrations
                     b.ToTable("Decks");
                 });
 
+            modelBuilder.Entity("LearnSpace.Models.Likes", b =>
+                {
+                    b.Property<int>("LikesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("TopicId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("LikesId");
+
+                    b.HasIndex("TopicId");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Likes");
+                });
+
             modelBuilder.Entity("LearnSpace.Models.Topic", b =>
                 {
                     b.Property<int>("TopicId")
@@ -127,10 +152,6 @@ namespace LearnSpace.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -140,12 +161,26 @@ namespace LearnSpace.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("varchar(15) CHARACTER SET utf8mb4")
-                        .HasMaxLength(15);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("LearnSpace.Models.Likes", b =>
+                {
+                    b.HasOne("LearnSpace.Models.Topic", "Topics")
+                        .WithMany()
+                        .HasForeignKey("TopicId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LearnSpace.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -38,8 +38,7 @@ namespace LearnSpace.Models
         public DateTime CreatedAt {get;set;} = DateTime.Now;
        
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
-        // public List<Euthusiasts> Euthusiasts {get;set;}
-
+        public List<Association> AllLikedAccomplishments {get;set;}
         
     }
 }

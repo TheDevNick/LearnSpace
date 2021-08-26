@@ -11,34 +11,48 @@
     <title>LearnSpace | New Topic</title>
 </head>
 <body>
-    <h2>Enter The Topic You Are Learning</h2>
-    <form asp-action="NewTopic" asp-controller="home" method="post">
-    <div>
-        <span asp-validation-for="TopicName"></span>
-        <div>
-            <label asp-for="TopicName">Topic Name </label>
-            <input asp-for="TopicName" type="text">
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Le<i class="fab fa-atlassian fa-xs"></i>rn Sp<i class="fab fa-atlassian fa-xs"></i>ce <i class="fas fa-brain"></i></h1>
+            <nav>
+                <ul>
+                    <li><a href="/accomplishments">Accomplishments</a></li>
+                    <li><a href="/LearnDashboard">Dashboard</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav> 
         </div>
     </div>
-    <div>
-        <div>
-        <span asp-validation-for="TopicDifficulty"></span>
-        <label asp-for="TopicDifficulty">Topic Difficulty </label>
-        <select asp-for="TopicDifficulty">
-            <option value="Easy😃">Easy😃</option>
-            <option value="Medium😕">Medium😕</option>
-            <option value="Hard😭">Hard😭</option>
-        </select>
+    
+    <div class="container">
+        <section id="headerInfo">
+            <h2 id="topicHeading">Enter The Topic You Are Learning</h2>
+            <i class="fas fa-book-reader fa-2x"></i>
+        </section>
+
+        <form asp-action="NewTopic" asp-controller="home" method="post" class="showcase-form card">
+            <div class="form-control">
+                <span asp-validation-for="TopicName"></span>
+                    <label asp-for="TopicName">Topic Name </label>
+                    <input asp-for="TopicName" type="text">
+            </div>
+            <div class="form-control">
+                <span asp-validation-for="TopicDifficulty"></span>
+                <label asp-for="TopicDifficulty">Topic Difficulty </label>
+                <select asp-for="TopicDifficulty">
+                    <option value="Easy😃">Easy😃</option>
+                    <option value="Medium😕">Medium😕</option>
+                    <option value="Hard😭">Hard😭</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <span asp-validation-for="TopicFeedback"></span>
+                    <label asp-for="TopicFeedback">Thoughts on This Topic</label>
+                    <textarea asp-for="TopicFeedback" name="TopicFeedback" cols="30" rows="10"></textarea>
+            </div>
+                <input type="submit" value="Add your topic" class="btn btn-dark">
+        </form> 
     </div>
-    </div>
-    <div>
-        <span asp-validation-for="TopicFeedback"></span>
-        <div>
-            <label asp-for="TopicFeedback">Thoughts on This Topic</label>
-            <textarea asp-for="TopicFeedback" name="TopicFeedback" cols="30" rows="10"></textarea>
-        </div>
-    </div>
-        <button type="submit">Add To Your Topics!</button>
-</form> 
 </body>
 </html>

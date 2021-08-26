@@ -1,4 +1,4 @@
-@model Accomplishment
+@model Card
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/utilities.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>LearnSpace | New Accomplishment</title>
+    <title>LearnSpace | Flashcards</title>
 </head>
 <body>
         <div class="navbar">
@@ -24,33 +24,30 @@
             </nav> 
         </div>
     </div>
-    <h2>Enter A Accomplishment!</h2>
-    <form asp-action="NewAccomplishment" asp-controller="home" method="post">
-    <div>
-        <span asp-validation-for="AccomplishmentName"></span>
-        <div>
-            <label asp-for="AccomplishmentName">Accomplishment Name </label>
-            <input asp-for="AccomplishmentName" type="text">
+
+@* This section will show the card *@
+ 
+<div class="container">
+    <section id="headerInfo">
+        <h1 id="topicHeading"> Flashcards</h1>
+        <h2>Add Your Flashcards Here <i class="fas fa-clone"></i></i></h2>
+    </section>
+    <form asp-action="AddCard" asp-controller="home" method="post" class="showcase-form card">
+
+        <div class="form-control">
+            <span asp-validation-for="CardQuestion"></span>
+                <label asp-for="CardQuestion">Front of Card</label>
+                <input asp-for="CardQuestion" type="text">
         </div>
-    </div>
-    <div>
-        <div>
-        <span asp-validation-for="AccomplishmentType"></span>
-        <label asp-for="AccomplishmentType">Level Of Accomplishment </label>
-        <select asp-for="AccomplishmentType">
-            <option value="SmallWin">Small Win</option>
-            <option value="BigWin">Big Win</option>
-        </select>
-    </div>
-    </div>
-    <div>
-        <span asp-validation-for="AccomplishmentDescription"></span>
-        <div>
-            <label asp-for="AccomplishmentDescription">Describe Accomplishment</label>
-            <textarea asp-for="AccomplishmentDescription" name="AccomplishmentDescription" cols="30" rows="10"></textarea>
+
+        <div class="form-control">
+            <span asp-validation-for="CardAnswer"></span>
+                <label asp-for="CardAnswer">Back(Answer) of Card</label>
+                <textarea asp-for="CardAnswer" name="CardAnswer" cols="30" rows="10"></textarea>
         </div>
-    </div>
-        <button type="submit">Add To Your Accomplishment!</button>
-</form> 
+            <input type="submit" value="Add Flashcard" class="btn btn-dark">
+    </form>           
+</div>
+        
 </body>
 </html>

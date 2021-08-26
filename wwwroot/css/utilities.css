@@ -24,6 +24,12 @@ UTILITIES STYLING  (classes that will be used all around website)
     background-color: #047AEA;
     color: #fff;
 }
+
+.fa-edit:nth-of-type(even)
+ {
+    color: #fff;
+}
+
 .fa-plus-circle {
     color: #047AEA;
 }
@@ -58,6 +64,8 @@ UTILITIES STYLING  (classes that will be used all around website)
     border: none;
     border-radius: 5px;
 }
+
+
 
 .btn-outline {
     background-color: transparent;

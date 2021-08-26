@@ -1,0 +1,70 @@
+@model Topic
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>LearnSpace | Dashboard</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Le<i class="fab fa-atlassian fa-xs"></i>rn Sp<i class="fab fa-atlassian fa-xs"></i>ce <i class="fas fa-brain"></i></h1>
+            <nav>
+                <ul>
+                    <li><a href="/accomplishments">Accomplishments</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav> 
+        </div>
+    </div>
+
+<div class="container">
+    <section id="headerInfo">
+        <h1 id="topicHeading">Edit This Topic</h1>
+    </section>
+   
+<form asp-action="EditTopic" asp-controller="home" asp method="post" asp-route-id="@Model.TopicId" class="CreateForm">
+    <div class = "inputDivs">
+        <span asp-validation-for="TopicName"></span>
+        <div>
+            <label asp-for="TopicName">Name: </label>
+            <input asp-for="TopicName" type="text" value="@Model.TopicName">
+        </div>
+    </div>
+        <div class = "inputDivs">
+        <span asp-validation-for="TopicFeedback"></span>
+        <div>
+            <label asp-for="TopicFeedback">TopicFeedback: </label>
+            <input asp-for="TopicFeedback" type="text" value="@Model.TopicFeedback">
+        </div>
+        <span asp-validation-for="TopicDifficulty"></span>
+        <div>
+            <label asp-for="TopicDifficulty">TopicDifficulty: </label>
+            <select asp-for="TopicDifficulty">
+            <option value="Easy😃">Easy😃</option>
+            <option value="Medium😕">Medium😕</option>
+            <option value="Hard😭">Hard😭</option>
+        </select>
+        </div>
+    </div>
+        <button type="submit">Make Edit</button>
+</form>
+
+
+
+</div>
+   
+
+
+
+
+
+</body>
+</html>

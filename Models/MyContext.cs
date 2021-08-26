@@ -11,5 +11,6 @@ namespace LearnSpace.Models
         public DbSet<Deck> Decks {get;set;}
         public DbSet<Card> Flashcards {get;set;}
         public DbSet<Accomplishment> Accomplishments {get;set;}
+        public DbSet<Association> Associations {get; set;}
     }
 }

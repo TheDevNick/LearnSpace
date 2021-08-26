@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LearnSpace.Migrations
 {
-    public partial class LearnSpaceAllTablesAdded : Migration
+    public partial class LearnSpaceInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +14,10 @@ namespace LearnSpace.Migrations
                 {
                     AccomplishmentId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    SmallWin = table.Column<string>(nullable: false),
-                    BigWin = table.Column<string>(nullable: false)
+                    AccomplishmentName = table.Column<string>(nullable: false),
+                    AccomplishmentDescription = table.Column<string>(nullable: false),
+                    AccomplishmentType = table.Column<string>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,6 +69,24 @@ namespace LearnSpace.Migrations
                 {
                     table.PrimaryKey("PK_Topics", x => x.TopicId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(nullable: false),
+                    Username = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserID);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -81,6 +102,9 @@ namespace LearnSpace.Migrations
 
             migrationBuilder.DropTable(
                 name: "Topics");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

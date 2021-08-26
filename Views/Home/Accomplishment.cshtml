@@ -1,4 +1,4 @@
-@model List<Accomplishment>
+@model Accomplishment
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,32 +8,87 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/utilities.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>LearnSpace | Dashboard</title>
+    <title>LearnSpace | Accomplishments</title>
 </head>
 <body>
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Le<i class="fab fa-atlassian fa-xs"></i>rn Sp<i class="fab fa-atlassian fa-xs"></i>ce <i class="fas fa-brain"></i></h1>
+            <nav>
+                <ul>
+                    <li><a href="/LearnDashboard">Dashboard</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav> 
+        </div>
+    </div>
 
-    <a href="/newaccomplishment">Add A Accomplishment</a>
-@* This section will show the topics *@
-<div>
-    <h1>Celebrate your Accomplishments!</h1>
-                <p>Name</p>
-                <p>Accomplishment Level</p>
-                <p>Accomplishment Description</p>
-
-            @foreach (var accomplish in Model)
+    <div class="container">
+    <section id="headerInfo">
+        <h1 id="topicHeading">Celebrate Your Success With Others</h1>
+        <h2>Add A Accomplishment <a href="/newaccomplishment"><i class="fas fa-plus-circle fa-lg"></i></a></h2>
+    </section>
+     @foreach (var accomplish in ViewBag.Accomplish)
             { 
-                <section> 
-                    <div>@accomplish.AccomplishmentName</div>
-                    <div>@accomplish.AccomplishmentType</div>
-                    <div>@accomplish.AccomplishmentDescription</div>
-                    <div>@accomplish.UserId</div>
+                <section class="topicBox card">
+                    @* <div>
+                        <h2>Name</h2>
+                        <h3>@accomplish.AccomplishmentName</h3>
+                    </div>
+
+                    <div>
+                        <h2>Accomplishment Type</h2>
+                        <h3>@accomplish.AccomplishmentType</h3>
+                    </div> *@
+                    <div>
+                        <h2>Reason To Celebrate</h2>
+                        <h3><em>"@accomplish.AccomplishmentDescription"</em></h3>
+                        <span>- @accomplish.User.FirstName</span>
+                    </div>
+                    @* <div>
+                        <h2>User</h2>
+                        <h3>@accomplish.User.FirstName</h3>
+                    </div> *@
+                    <div class="modifyTopic likeInfo">
+                        <a href="accomplishment/like/@accomplish.AccomplishmentId" class="heart"><i class="fas fa-heart fa-2x"></i></a>
+                        <span>@accomplish.AllLikingUsers.Count</span>
+                        @* <a href="/viewTopic/delete/@topic.TopicId"><i class="fas fa-trash fa-2x"></i></a> *@
+                    </div>
                 </section>
-                <hr>
-               
             }
+    </div>
 
+         @* @foreach (var accomplish in ViewBag.Accomplish)
+            { 
+                <section class="topicBox card">
+                    @* <div>
+                        <h2>Name</h2>
+                        <h3>@accomplish.AccomplishmentName</h3>
+                    </div>
 
-</div>
+                    <div>
+                        <h2>Accomplishment Type</h2>
+                        <h3>@accomplish.AccomplishmentType</h3>
+                    </div> *@
+                    @* <div>
+                        <h2>Reason To Celebrate</h2>
+                        <h3>@accomplish.AccomplishmentDescription</h3>
+                    </div>
+                    <div>
+                        <h2>User</h2>
+                        <h3>@accomplish.UserId</h3>
+                    </div>
+                    <div class="modifyTopic">
+                        <form asp-action="AddLike" asp-controller="home" method="post">
+                        <button type="submit"><a><i class="fas fa-heart fa-2x"></i></a></button>
+                        <span>@accomplish.UserLikes.Count</span>
+                        </form>
+                        @* <a href="/viewTopic/delete/@topic.TopicId"><i class="fas fa-trash fa-2x"></i></a> *@
+                    @* </div>
+                </section> *@ 
+            @* } *@ 
+
 
 </body>
 </html>

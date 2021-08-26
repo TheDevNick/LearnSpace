@@ -18,8 +18,7 @@
             <h1 class="logo">Le<i class="fab fa-atlassian fa-xs"></i>rn Sp<i class="fab fa-atlassian fa-xs"></i>ce <i class="fas fa-brain"></i></h1>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Motivation</a></li>
+                    <li><a href="Registration.cshtml">Home</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav> 
@@ -32,10 +31,10 @@
             <div class="showcase-text">
                 <h1>Track Your Learning</h1>
                 <p>A easy way to track your learning. Enter a topic, rate your profeciency on the topic, study the topic, and share your success with everyone! </p>
-                <a href="features.html" class="btn btn-outline">Read More</a>
+                <a href="#" class="btn btn-outline">Read More</a>
             </div>
             <div class="showcase-form card">
-                <h2>Sign Up Today!</h2>
+                <h2>Track Your Learning Today!</h2>
                 <form asp-action="registration" asp-controller="home" method="post">
                     <div class="form-control">
                     <span class="error" asp-validation-for="FirstName"></span>
@@ -74,19 +73,19 @@
             </h3>
             <div class="grid grid-3 text-center my-4">
                 <div>
-                    <i class="fas fa-server fa-3x"></i>
-                    <h3>10,345</h3>
-                    <p class="text-secondary">Deployments</p>
+                    <i class="fas fa-user-graduate fa-3x"></i>
+                    <h3>0</h3>
+                    <p class="text-secondary">Students Helped</p>
                 </div>
                 <div>
-                    <i class="fas fa-upload fa-3x"></i>
-                    <h3>524 TB</h3>
-                    <p class="text-secondary">Published </p>
+                    <i class="fas fa-check-circle fa-3x"></i>
+                    <h3>0</h3>
+                    <p class="text-secondary">Student Accomplishments </p>
                 </div>
                 <div>
-                    <i class="fas fa-project-diagram fa-3x"></i>
-                    <h3>75,000</h3>
-                    <p class="text-secondary">Projects</p>
+                    <i class="fas fa-book-reader fa-3x"></i>
+                    <h3>0</h3>
+                    <p class="text-secondary">Topics Studied</p>
                 </div>
             </div>
         </div>
@@ -98,10 +97,10 @@
         <div class="container grid">
             <img src="img/cli.png" alt="CLI image">
             <div class="card">
-                <h3>Easy to use, cross platform CLI</h3>
+                <h3>Easy to use, Learning Platform</h3>
             </div>
             <div class="card">
-                <h3>Deploy in seconds</h3>
+                <h3>Learn How To Learn</h3>
             </div>
         </div>
     </section>
@@ -111,9 +110,9 @@
     <section class="cloud bg-primary my-2 py-2">
         <div class="container grid">
             <div class="text-center">
-                <h2 class="lg">Extreme Cloud Hosting</h2>
-                <p class="lead my-1">Cloud hosting like you never seen. Fast, effecient, and scalable</p>
-                <a href="features.html" class="btn btn-dark">Read More</a>
+                <h2 class="lg">A Easier Way To Learn</h2>
+                <p class="lead my-1">Learn A Topic You Are studying Effectively</p>
+                <a href="#" class="btn btn-dark">Read More</a>
             </div>
             <img src="img/cloud.png" alt="">
         </div>
@@ -121,7 +120,7 @@
 
     <!-- SUPPORTED LANGUAGES SECTION -->
 
-    <section class="languages">
+    @* <section class="languages">
         <h2 class="ms text-center my-2">
             Supported Languages
         </h2>
@@ -155,7 +154,7 @@
                 <img src="img/logos/clojure.png" alt="">
             </div>
         </div>
-    </section>
+    </section> *@
 
     <!-- FOOTER -->
     <footer class="bg-dark py-5">
@@ -166,9 +165,8 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="features.html">Featues</a></li>
-                    <li><a href="docs.html">Docs</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
 

@@ -87,18 +87,41 @@ namespace LearnSpace.Controllers
         [HttpGet("/learndashboard")]
         public IActionResult LearnDashboard()
         {
-            List<Topic> AllTopics = db.Topics
-            .ToList();
-            return View(AllTopics);
+            //will need to add a session so only the user will see their own personal dashboard
+            int? UserId = HttpContext.Session.GetInt32("UserId");
+            if(UserId == null)
+            {
+                return View("Registration");
+            }
+
+            User user = db.Users.FirstOrDefault(i => i.UserID == UserId);
+            ViewBag.Topics = db.Topics
+            .Where(usr => usr.UserId == UserId);
+            ViewBag.User = user;
+
+            return View();
         }
 
 
         [HttpGet("/accomplishments")]
         public IActionResult Accomplishment() 
         {
-            List<Accomplishment> AllAccomplishments = db.Accomplishments
-            .ToList();
-            return View(AllAccomplishments);
+             int? UserId = HttpContext.Session.GetInt32("UserId");
+            if(UserId == null)
+            {
+                return View("Registration");
+            }
+            // List<Accomplishment> AllAccomplishments = db.Accomplishments
+            // .ToList();
+            User user = db.Users.FirstOrDefault(i => i.UserID == UserId);
+            ViewBag.Accomplish = db.Accomplishments
+            .Include(accomp => accomp.User)
+            .Include(accomp => accomp.AllLikingUsers);
+        
+            // .Where(usr => usr.UserId == UserId);
+            ViewBag.User = user;
+
+            return View();
         }
 
         [HttpGet("/newaccomplishment")]
@@ -155,6 +178,34 @@ namespace LearnSpace.Controllers
 
         }
 
+            [HttpGet("/addcard")]
+            public IActionResult AddCard() => View("AddCard");
+
+            // ----------------------------- ADD FLASHCARD ------------------------------
+            [HttpPost("/addcard")]
+            public IActionResult AddCard(Card data)
+            {
+                // Card Validation
+                if (ModelState.IsValid)
+                {
+                    Card uniqueCard = db.Flashcards.FirstOrDefault(card => card.CardQuestion == data.CardQuestion);
+                    if (uniqueCard != null)
+                    {
+                        ModelState.AddModelError("CardQuestion", "You are already have a card with this question.");
+                        return View("AddCard");
+
+                    }
+                    User user = db.Users.FirstOrDefault(usr => usr.UserID == (int)HttpContext.Session.GetInt32("UserId"));
+                    db.Flashcards.Add(data);
+                    db.SaveChanges();
+                    TempData["AddedCard"] = $"You successfully added a flashcard!🎉🎉🎉 ";
+                    return RedirectToAction("LearnDashboard");
+                }
+                return View("AddCard");
+
+            }
+            // ----------------------------- ADD FLASHCARD END---------------------------
+
         [HttpGet("/viewtopic/edit/{TopicId}")]
 
         public IActionResult Edit(int TopicId)
@@ -179,6 +230,62 @@ namespace LearnSpace.Controllers
             }
             return RedirectToAction("LearnDashboard");
         }
+
+
+        [HttpGet("/viewTopic/delete/{TopicId}")]
+        public IActionResult Delete(int TopicId)
+        {
+            var topicDelete = db.Topics.FirstOrDefault(top => top.TopicId == TopicId);
+            if(topicDelete == null)
+                return RedirectToAction("LearnDashboard");
+            db.Topics.Remove(topicDelete);
+            db.SaveChanges();
+            return RedirectToAction("LearnDashboard");
+        }
+
+        [HttpGet("/accomplishment/like/{accompId}")]
+        public IActionResult AddLike(int accompId)
+        {
+            User user = db.Users.FirstOrDefault(usr => usr.UserID == (int)HttpContext.Session.GetInt32("UserId"));
+            Accomplishment accomplish = db.Accomplishments.FirstOrDefault(accomp => accomp.AccomplishmentId == accompId);
+            // !!!! Confirm that the accomplishment exists
+            if ( user == null || accomplish == null ) 
+            {
+                return RedirectToAction("Accomplishment");
+            }
+
+
+            // the user has not already liked it.
+
+            if (db.Associations.Any(userLikeAccomplishment => userLikeAccomplishment.AccomplishmentId == accomplish.AccomplishmentId && userLikeAccomplishment.UserId == user.UserID))
+
+            {
+                return RedirectToAction("Accomplishment");
+            }
+
+            // use the accompId and user to create a new record in Associations
+           Association assoc = new Association()
+            {
+                UserId = (int)HttpContext.Session.GetInt32("UserId"),
+                AccomplishmentId = accompId
+            };
+
+            db.Add(assoc);
+            db.SaveChanges();
+            return RedirectToAction("Accomplishment");
+
+        }
+
+
+
+        [HttpGet("/logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            TempData["ComeBackMsg"] = $"Come back tommorrow and learn some more! ";
+            return RedirectToAction("Login");
+        }
+
 
     }
 }
